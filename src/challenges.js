@@ -1,27 +1,22 @@
-// Desafio 1
 function compareTrue(aboolean, bboolean) {
   if (aboolean === true && bboolean === true) {
     return true
   }else{
-  return false;
+    return false;
   }
 }
 
-
-// Desafio 2
 function calcArea(base, height) {
   let result = (base * height) / 2;
 
   return result;
 }
 
-// Desafio 3
 function splitSentence(word) {
   let text = word.split(' ',5)
   return text;
 }
 
-// Desafio 4
 function concatName(numbers) {
   let concatenado = '';
   for (let i = 0; i < numbers.length; i += 1) {
@@ -30,36 +25,43 @@ function concatName(numbers) {
   return concatenado;
 }
 
-// Desafio 5
 function footballPoints(wins, ties) {
   let pontosTotais = wins * 3 + ties;
   return pontosTotais
 }
 
-// Desafio 6
 function highestCount(numbers) {
-	// seu código aqui
 	let highNum = numbers[0];
 	let repeticao = 0;
-	for (let index = 0; index < numbers.length; index += 1) {
-	  if (numbers[index] > highNum) {
-		highNum = numbers[index];
+	for (let i = 0; i < numbers.length; i += 1) {
+	  if (numbers[i] > highNum) {
+		highNum = numbers[i];
 	  }
 	}
-	for (let index = 0; index < numbers.length; index += 1) {
-	  if (highNum == numbers[index]) {
+	for (let i = 0; i < numbers.length; i += 1) {
+	  if (highNum == numbers[i]) {
 		repeticao += 1;
 	  }
 	}
-	return repeticao;
+	  return repeticao;
   }
 
-// Desafio 7
-function catAndMouse() {
-  // seu código aqui
+function catAndMouse(mouse) {
+  let distanciaC1 = Math.abs(mouse - cat1);
+  let distanciaC2 = Math.abs(mouse - cat2);
+  let msg;
+  if (mouse) {
+    if (distanciaC1 > distanciaC2) {
+      msg = "cat2";
+    } else if (distanciaC2 > distanciaC1) {
+      msg = "cat1";
+    } else {
+      msg = "os gatos trombam e o rato foge";
+    }
+  }
+  return msg;
 }
 
-// Desafio 8
 function fizzBuzz(numbers) {
   let result = [];
   for(let i = 0; i < numbers.length; i += 1){
@@ -75,11 +77,8 @@ function fizzBuzz(numbers) {
   }
   return result;
 }
-console.log(fizzBuzz([2, 15, 7, 9, 45]))
 
-// Desafio 9
 function encode(word) {
-  // seu código aqui
   let newLetter = "";
   for ( let i = 0; i < word.length; i = i + 1) {
     switch (word[i]) {
@@ -131,25 +130,84 @@ function decode(word) {
   return newLetter;
 }
 
-
-// Desafio 10
-function techList() {
-  // seu código aqui
+function techList(list, item) {
+  if (list.length === 0) {
+    return 'Vazio!';
+  }
+  let nameTech = [];
+  let sortedList = list.sort();
+  for (let i = 0; i < sortedList.length; i += 1) {
+    nameTech[i] = {
+      name: item,
+      tech: sortedList[i],
+    };
+  }
+  return nameTech;
 }
 
-// Desafio 11
-function generatePhoneNumber() {
-  // seu código aqui
+function timesCount(list) {
+  let howManyTimes = {};
+  for (let i in list) {
+    if (list[i] in howManyTimes) {
+      howManyTimes[list[i]] += 1;
+    } else {
+      howManyTimes[list[i]] = 1;
+    }
+  }
+  let result = howManyTimesResult(howManyTimes);
+  return result;
 }
 
-// Desafio 12
-function triangleCheck() {
-  // seu código aqui
+function checkNumbers(numbers) {
+  let test = timesCount(numbers);
+  if (test) {
+    return true;
+  }
+  for (let i in numbers) {
+    if (numbers[i] > 9 || numbers[i] < 0) {
+      return true;
+    }
+  }
+  return false;
 }
 
-// Desafio 13
-function hydrate() {
-  // seu código aqui
+function generatePhoneNumber(n) {
+  let result = '';
+  if (n.length !== 11) {
+    result = 'Array com tamanho incorreto.';
+  } else if (checkNumbers(n)) {
+    result = 'não é possível gerar um número de telefone com esses valores';
+  } else {
+    result = `(${n[0]}${n[1]}) ${n[2]}${n[3]}${n[4]}${n[5]}${n[6]}-${n[7]}${n[8]}${n[9]}${n[10]}`;
+  }
+  return result;
+}
+
+function triangleCheck(a, b, c) {
+  let result = false;
+  let condA = (a < (b + c)) && (a > Math.abs(b - c));
+  let condB = (b < (a + c)) && (b > Math.abs(a - c));
+  let condC = (c < (b + a)) && (c > Math.abs(b - a));
+
+  if (condA && condB && condC) {
+    result = true;
+  }
+  return result;
+}
+
+function hydrate(string) {
+  let numbers = string.replace(/\D/g, '');
+  let soma = 0;
+  let msg = '';
+  for (let i = 0; i < numbers.length; i += 1) {
+    soma += parseInt(numbers[i], 10);
+  }
+  if (soma === 1) {
+    msg = '1 copo de água';
+  } else if (soma > 1) {
+    msg = `${soma} copos de água`;
+  }
+  return msg;
 }
 
 
