@@ -1,3 +1,5 @@
+//README FIRST
+
 function compareTrue(aboolean, bboolean) {
   if (aboolean === true && bboolean === true) {
     return true
